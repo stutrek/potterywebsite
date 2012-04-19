@@ -13,7 +13,7 @@ define(function(require, exports, module) {
 	
 	exports.loadAll = function( success, failure ) {
 		return $.ajax({
-			url: "./php/fetchdata.php",
+			url: "./php/products_json.php",
 			dataType: 'json',
 			success: setProducts,
 			error: fetchError
