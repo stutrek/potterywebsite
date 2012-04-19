@@ -29,8 +29,10 @@
 		<div class="screen">
 		</div>
 		<div class="product_display_container-border">
+			<a href="#" class="previous">previous</a>
 			<div id="product_display_container">
 			</div>
+			<a href="#" class="next">next</a>
 		</div>
 	</div>
 	<script id="product_list_item" type="text/template">
@@ -45,6 +47,7 @@
 			<div class="price">$${price}</div>
 		</div>
 	</script>
+	<script src="./js/lib/prototypes.js"></script>
 	<script src="./js/lib/jquery.js"></script>
 	<script src="./js/lib/jquery.tmpl.js"></script>
 	<script src="./js/lib/sea.js" data-main="./js/app/startup"></script>

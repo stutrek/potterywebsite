@@ -21,7 +21,11 @@
 	right: 0;
 	z-index: 1;
 }
-
+#product_page .next, #product_page .previous {
+	position: relative;
+	z-index: 2;
+	color: white;
+}
 #product_page .product_display_container-border {
 	position: absolute;
 	top: 70px;

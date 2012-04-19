@@ -4,6 +4,8 @@ define(function(require, exports, module) {
 	var container$;
 	var popup$;
 	var screen$;
+	var currentIndex;
+	var products;
 	
 	var previousHash = '';
 
@@ -12,7 +14,26 @@ define(function(require, exports, module) {
 			exports.hide();
 		}
 	}
+	
+	function showIndex( index ) {
+		container$.empty();
+		$.tmpl(TEMPLATE_NAME, products[index]).appendTo(container$);
 		
+		if (index === 0) {
+			popup$.find('.previous').hide();
+		} else {
+			popup$.find('.previous').show();
+		}
+		
+		if (index === products.length-1) {
+			popup$.find('.next').hide();
+		} else {
+			popup$.find('.next').show();
+		}
+		
+		currentIndex = index;
+	}
+	
 	exports.init = function() {
 		templateString = document.getElementById('product_popup').innerHTML;
 		container$ = $('#product_display_container');
@@ -20,14 +41,24 @@ define(function(require, exports, module) {
 		screen$ = popup$.find('.screen');
 		screen$.on('click', exports.hide);
 		$.template( TEMPLATE_NAME, templateString );
+		
+		popup$.on('click', '.next', exports.showNext);
+		popup$.on('click', '.previous', exports.showPrevious);
 	};
 	
-	exports.show = function( product ) {
-		container$.empty();
-		$.tmpl(TEMPLATE_NAME, product).appendTo(container$);
+	exports.show = function( newProducts, index ) {
+		products = newProducts;
+		showIndex( index );
 		popup$.addClass('showing');
 		$(document).on('keyup', escapeListener);
 		previousHash = window.location.hash;
+	};
+	
+	exports.showNext = function() {
+		showIndex( currentIndex+1 );
+	};
+	exports.showPrevious = function() {
+		showIndex( currentIndex-1 );
 	};
 	
 	exports.hide = function() {
