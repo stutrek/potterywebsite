@@ -1,0 +1,10 @@
+#header {
+	border-bottom: 0.2em solid #888;
+}
+#header #links {
+	display: inline;
+}
+#header a {
+	margin-left: 2em;
+}
+

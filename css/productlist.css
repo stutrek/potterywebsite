@@ -1,0 +1,15 @@
+#content .loading {
+	color: #666;
+	font-size: 3em;
+	text-align: center;
+	margin-top: 2em;
+}
+
+#content a.product {
+	display: inline-block;
+	height: 113px;
+	width: 150px;
+}
+#content a.product:hover {
+	text-decoration: none;
+}
