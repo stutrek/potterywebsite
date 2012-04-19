@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div id="content">
-		<div class="loading">Loading...</div>
+		<div class="loading">Loading Website...</div>
 	</div>
 	<div id="footer">
 	

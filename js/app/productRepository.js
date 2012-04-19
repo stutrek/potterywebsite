@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 		throw new Error('Error fetching data from the server!');
 	}
 	
-	exports.init = function( success, failure ) {
+	exports.loadAll = function( success, failure ) {
 		return $.ajax({
 			url: "./php/fetchdata.php",
 			dataType: 'json',

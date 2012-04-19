@@ -64,3 +64,6 @@
 	margin: 0;
 	padding-right: 5px;
 }
+#product_display_container ul.imageselector li img {
+	width: 100px;
+}

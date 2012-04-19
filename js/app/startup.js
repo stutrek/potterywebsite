@@ -8,7 +8,9 @@ define(function(require, exports, module) {
 			productList.render(products);
 		}
 		
-		var repositoryPromise = productRepository.init();
+		$('#content .loading').html('Loading pottery...');
+		
+		var repositoryPromise = productRepository.loadAll();
 		productList.init();
 		productPage.init();
 		
