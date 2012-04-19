@@ -9,11 +9,12 @@
 	bottom: 0;
 	right: 0;
 	text-align: center;
+	overflow: auto;
 }
 
 #product_page .screen {
 	background-color: black;
-	position: absolute;
+	position: fixed;
 	opacity: 0.8;
 	top: 0;
 	left: 0;
@@ -39,14 +40,27 @@
 	background-color: black;
 	color: #999;
 	z-index: 2;
+	text-align: left;
 }
 
-#product_display_container img {
-	margin-right: 300px;
+#product_display_container img.productimage {
+	margin-right: 250px;
+	width: 700px;
+	height: 525px;
 }
 #product_display_container .productinfo {
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: 300px;
+	width: 250px;
+}
+#product_display_container ul.imageselector {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#product_display_container ul.imageselector li {
+	display: inline-block;
+	margin: 0;
+	padding-right: 5px;
 }

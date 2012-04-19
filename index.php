@@ -29,19 +29,26 @@
 		<div class="screen">
 		</div>
 		<div class="product_display_container-border">
-			<a href="#" class="previous">previous</a>
+			<a href="#" class="previous"><span>previous</span></a>
 			<div id="product_display_container">
 			</div>
-			<a href="#" class="next">next</a>
+			<a href="#" class="next"><span>next</span></a>
 		</div>
 	</div>
 	<script id="product_list_item" type="text/template">
 		<a class="product" href="#!product/${id}/${title}" data-product-id="${id}">
-			<img src="./productimages/thumbs/${imageName}" alt="" />
+			<img src="./productimages/thumbs/${images[0]}" alt="" />
 		</a>
 	</script>
 	<script id="product_popup" type="text/template">
-		<img src="./productimages/750/${imageName}" alt="" />
+		<div class="productimage">
+			<img src="./productimages/750/${images[0]}" class="productimage" alt="" />
+			<ul class="imageselector">
+				{{each images}}
+					<li><a href="#" data-src="./productimages/750/${this}"><img src="./productimages/thumbs/${this}" alt="" /></a></li>
+				{{/each}}
+			</ul>
+		</div>
 		<div class="productinfo">
 			<div class="description">${description}</div>
 			<div class="price">$${price}</div>

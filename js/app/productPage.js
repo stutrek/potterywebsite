@@ -34,6 +34,11 @@ define(function(require, exports, module) {
 		currentIndex = index;
 	}
 	
+	function thumbnailImageClick( event ) {
+		var newSrc = event.currentTarget.getAttribute('data-src');
+		container$.find('.productimage').attr('src', newSrc);
+	}
+	
 	exports.init = function() {
 		templateString = document.getElementById('product_popup').innerHTML;
 		container$ = $('#product_display_container');
@@ -44,6 +49,8 @@ define(function(require, exports, module) {
 		
 		popup$.on('click', '.next', exports.showNext);
 		popup$.on('click', '.previous', exports.showPrevious);
+		
+		container$.on('click', 'a[data-src]', thumbnailImageClick);
 	};
 	
 	exports.show = function( newProducts, index ) {
