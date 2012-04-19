@@ -9,6 +9,7 @@
 	display: inline-block;
 	height: 113px;
 	width: 150px;
+	margin: 10px;
 }
 #content a.product:hover {
 	text-decoration: none;
