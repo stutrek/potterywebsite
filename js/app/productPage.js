@@ -5,6 +5,7 @@ define(function(require, exports, module) {
 	var popup$;
 	var screen$;
 	
+	var previousHash = '';
 
 	function escapeListener( event ) {
 		if (event.keyCode === 27) {
@@ -26,10 +27,12 @@ define(function(require, exports, module) {
 		$.tmpl(TEMPLATE_NAME, product).appendTo(container$);
 		popup$.addClass('showing');
 		$(document).on('keyup', escapeListener);
+		previousHash = window.location.hash;
 	};
 	
 	exports.hide = function() {
 		popup$.removeClass('showing');
 		$(document).off('keyup', escapeListener);
+		window.location.hash = previousHash;
 	};
 });
