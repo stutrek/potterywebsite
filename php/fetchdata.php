@@ -1,6 +1,25 @@
 <?php
+require('./db.php');
+
+$result = mysql_query("SELECT * FROM products WHERE available=1 ORDER BY awesomeness DESC, date_added DESC");
+
+if (!$result) {
+	echo mysql_error();
+}
+
+$output = array();
+
+while($row = mysql_fetch_assoc($result)) {
+	$image_result = mysql_query("SELECT * FROM productimages WHERE product_id=$row[id] ORDER BY `order`");
+	$row['images'] = array();
+	while( $image = mysql_fetch_assoc($image_result) ) {
+		$row['images'][] = $image;
+	}
+	$output[] = $row;
+}
+
+
 header('content-type: application/json');
-?>[
-	{"title": "Bowl", "images": ["1-bowl.jpg"], "id":1, "price": 50.00, "description":"This is a beautiful bowl big enough for soup or a LOT of cereal."},
-	{"title": "Bowls", "images": ["2-bowls.jpg", "3-bowls.jpg"], "id":2, "price": 30.00, "description":"These bowls are great for rice or small dishes."}
-]
+
+echo json_encode($output);
+?>

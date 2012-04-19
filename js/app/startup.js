@@ -17,7 +17,7 @@ define(function(require, exports, module) {
 		$(document).on('click', 'a', function( event ) {
 			var productId = event.currentTarget.getAttribute('data-product-id')
 			if (productId) {
-				var product = productRepository.getById(+productId);
+				var product = productRepository.getById(productId);
 				
 				productPage.show(products, products.indexOf(product));
 			}
