@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 	
 	exports.init = function() {
 		templateString = document.getElementById('product_popup').innerHTML;
-		container$ = $('#product_display_container');
+		container$ = $('#product_display_container .content');
 		popup$ = $('#product_page');
 		screen$ = popup$.find('.screen');
 		screen$.on('click', exports.hide);

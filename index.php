@@ -29,10 +29,11 @@
 		<div class="screen">
 		</div>
 		<div class="product_display_container-border">
-			<a href="#" class="previous"><span>previous</span></a>
 			<div id="product_display_container">
+				<a href="#" class="previous"><span>previous</span></a>
+				<div class="content"></div>
+				<a href="#" class="next"><span>next</span></a>
 			</div>
-			<a href="#" class="next"><span>next</span></a>
 		</div>
 	</div>
 	<script id="product_list_item" type="text/template">

@@ -23,14 +23,30 @@
 	z-index: 1;
 }
 #product_page .next, #product_page .previous {
-	position: relative;
+	position: absolute;
 	z-index: 2;
 	color: white;
+	top: 50%;
+	margin-top: -18px;
+	height: 36px;
+	width: 36px;
+	color: transparent;
+}
+#product_page .next {
+	background-image: url(../images/next-arrow.png);
+	right: 0;
+	margin-right: -36px;
+}
+#product_page .previous {
+	background-image: url(../images/previous-arrow.png);
+	left: 0;
+	margin-left: -36px;
 }
 #product_page .product_display_container-border {
 	position: absolute;
-	top: 70px;
-	bottom: 70px;
+	top: 50%;
+	height: 610px;
+	margin-top: -305px;
 	width: 100%;
 }
 #product_page #product_display_container {
