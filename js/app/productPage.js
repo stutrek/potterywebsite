@@ -9,13 +9,27 @@ define(function(require, exports, module) {
 	
 	var previousHash = '';
 
-	function escapeListener( event ) {
-		if (event.keyCode === 27) {
-			exports.hide();
+	function keyListener( event ) {
+		switch (event.keyCode ) {
+			case 27: // escape
+				exports.hide();
+				break;
+			case 39: // right arrow
+				exports.showNext();
+				break;
+			case 37: // left arrow
+				exports.showPrevious();
+				break;
 		}
 	}
 	
 	function showIndex( index ) {
+		if (index < 0) {
+			index = 0;
+		}
+		if (index >= products.length) {
+			index = products.length-1;
+		}
 		container$.empty();
 		$.tmpl(TEMPLATE_NAME, products[index]).appendTo(container$);
 		
@@ -57,7 +71,7 @@ define(function(require, exports, module) {
 		products = newProducts;
 		showIndex( index );
 		popup$.addClass('showing');
-		$(document).on('keyup', escapeListener);
+		$(document).on('keyup', keyListener);
 		previousHash = window.location.hash;
 	};
 	
@@ -70,7 +84,7 @@ define(function(require, exports, module) {
 	
 	exports.hide = function() {
 		popup$.removeClass('showing');
-		$(document).off('keyup', escapeListener);
+		$(document).off('keyup', keyListener);
 		window.location.hash = previousHash;
 	};
 });

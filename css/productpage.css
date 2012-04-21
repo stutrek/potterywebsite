@@ -27,20 +27,24 @@
 	z-index: 2;
 	color: white;
 	top: 50%;
-	margin-top: -18px;
-	height: 36px;
-	width: 36px;
+	margin-top: -45px;
+	height: 90px;
+	width: 48px;
 	color: transparent;
+	opacity: 0.3;
+}
+#product_page .next:hover, #product_page .previous:hover {
+	opacity: 1;
 }
 #product_page .next {
 	background-image: url(../images/next-arrow.png);
 	right: 0;
-	margin-right: -36px;
+	margin-right: -48px;
 }
 #product_page .previous {
 	background-image: url(../images/previous-arrow.png);
 	left: 0;
-	margin-left: -36px;
+	margin-left: -48px;
 }
 #product_page .product_display_container-border {
 	position: absolute;

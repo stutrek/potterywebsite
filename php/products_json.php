@@ -1,5 +1,5 @@
 <?php
-require('./db_interface.php');
+require('db_interface.php');
 
 $output = get_available_products();
 

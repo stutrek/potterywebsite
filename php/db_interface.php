@@ -1,5 +1,5 @@
 <?php
-require("./db_setup.php");
+require("db_setup.php");
 
 $product_fields = array( 'title', 'description', 'type', 'price', 'available', 'awesomeness' );
 
@@ -14,9 +14,7 @@ function create_safe_product( $product ) {
 	return $safe_product;
 }
 
-function get_available_products() {
-	$result = mysql_query("SELECT * FROM products WHERE available=1 ORDER BY awesomeness DESC, date_added DESC");
-	
+function get_all_products_from_result( $result ) {
 	if (!$result) {
 		echo mysql_error();
 	}
@@ -35,8 +33,24 @@ function get_available_products() {
 	}
 	
 	return $return;
+
 }
 
+function get_available_products() {
+	$result = mysql_query("SELECT * FROM products WHERE available=1 ORDER BY awesomeness DESC, date_added DESC");
+	return get_all_products_from_result( $result );
+}
+
+function get_all_products() {
+	$result = mysql_query("SELECT * FROM products ORDER BY date_added DESC");
+	return get_all_products_from_result( $result );
+}
+
+function get_product($id) {
+	$result = mysql_query("SELECT * FROM products WHERE id=$id LIMIT 1");
+	$products = get_all_products_from_result( $result );
+	return $products[0];
+}
 function add_product( $product ) {
 	$db_product = create_safe_product($product);
 	$db_product['date_added'] = 'now()';
