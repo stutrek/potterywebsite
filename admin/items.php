@@ -4,8 +4,7 @@ require_once( 'admin_functions.php');
 if( isset( $_REQUEST['save'] ) ) {
 	
 	$item_a = $_REQUEST['item'];
-	$item_a['on_sale'] = isset( $item_a['on_sale'] );
-	$item_a['sold_out'] = isset( $item_a['sold_out'] );
+	$item_a['available'] = isset( $item_a['available'] );
 	
 	if( is_numeric( $_REQUEST['id'] ) ) {
 		$id = $_REQUEST['id'];
@@ -89,7 +88,7 @@ if( !$item_a ) {
 		//<![CDATA[
 		var image_inputs = 1;
 		function add_image_input() {
-			$('#image_inputs').append( '<table><tr><td class="input_label">image<'+'/td><td><input type="file" name="images['+image_inputs+']" size="20" /><'+'/td><'+'/tr><tr><td class="input_label">type<'+'/td><td><input type="text" name="images['+image_inputs+'][view]" size="20" /><'+'/td><'+'/tr><tr><td class="input_label">description<'+'/td><td><textarea name="images['+image_inputs+'][description]"  rows="3" cols="60"><'+'/textarea><'+'/td><'+'/tr><'+'/table>' );
+			$('#image_inputs').append( '<table><tr><td class="input_label">image<'+'/td><td><input type="file" name="images['+image_inputs+']" size="20" /><'+'/td><'+'/tr><'+'/table>' );
 			image_inputs++;
 		}
 		//]]>
@@ -103,16 +102,15 @@ if( !$item_a ) {
 		<form action="?" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<table>
-					<tr><td class="input_label">URL</td><td><input type="text" name="item[url]" value="<?= $item_a['url'];?>"></td></tr>
 					<tr><td class="input_label">Title</td><td><input type="text" name="item[title]" value="<?= $item_a['title'];?>"></td></tr>
 					<tr><td class="input_label"></td>
 						<td>
-							<input type="checkbox" name="item[available]" id="available" <?= is_checked( $item_a['available'] ); ?>> <label for="on_sale"> Available</label><br/>
+							 <label><input type="checkbox" name="item[available]" id="available" <?= is_checked( $item_a['available'] ); ?>> Available</label><br/>
 						</td>
 					</tr>
 					<tr><td class="input_label">Price</td><td>$<input type="text" name="item[price]" size="7" value="<?= $item_a['price'];?>"></td></tr>
-					<tr><td class="input_label">type</td><td><input type="text" name="item[section]" value="<?= $item_a['section'];?>"></td></tr>
 					<tr><td class="input_label">Description</td><td><textarea name="item[description]" rows="5" cols="50"><?= $item_a['description']; ?></textarea>
+
 					<? if( !isset( $_REQUEST['new'] ) ) { ?>
 					<tr><td class="input_label"><? if( $_REQUEST['id'] ) { echo '<input type="hidden" name="id" value="'.$_REQUEST['id'].'">'; } ?>
 						<td>
@@ -127,8 +125,7 @@ if( !$item_a ) {
 					<div id="image_inputs">
 						<table>
 							<tr><td class="input_label">image</td><td><input type="file" name="images[0]" size="20" /></td></tr>
-							<tr><td class="input_label">view</td><td><input type="text" name="images[0][view]" size="20" /></td></tr>
-							<tr><td class="input_label">description</td><td><textarea name="images[0][description]" rows="3" cols="60"></textarea></td></tr>
+td></tr>
 						</table>
 					</div>
 					<input type="submit" name="save" value="Save">
