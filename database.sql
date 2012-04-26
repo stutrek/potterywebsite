@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2012 at 02:36 PM
+-- Generation Time: Apr 25, 2012 at 09:49 PM
 -- Server version: 5.1.48
 -- PHP Version: 5.3.6
 
@@ -23,12 +23,9 @@ CREATE TABLE IF NOT EXISTS `productimages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `product_id` int(10) unsigned NOT NULL,
   `filename` varchar(127) NOT NULL,
-  `height` int(11) NOT NULL,
-  `width` int(11) NOT NULL,
-  `order` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -45,5 +42,6 @@ CREATE TABLE IF NOT EXISTS `products` (
   `available` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `awesomeness` int(11) NOT NULL,
+  `image_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
