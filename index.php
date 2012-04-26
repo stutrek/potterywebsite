@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Stuart Aaron Pottery</title>
+	<title>Stuart Aaron Ceramics by Stu Kabakoff</title>
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<link rel="stylesheet" href="./css/footer.css">
