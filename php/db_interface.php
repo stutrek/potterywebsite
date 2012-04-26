@@ -31,7 +31,7 @@ function get_all_products_from_result( $result ) {
 	$return = array();
 	
 	while($row = mysql_fetch_assoc($result)) {
-		$image_result = mysql_query("SELECT * FROM productimages WHERE product_id=$row[id] ORDER BY (ID = $row[image_id])");
+		$image_result = mysql_query("SELECT * FROM productimages WHERE product_id=$row[id] ORDER BY (ID != $row[image_id])");
 		$row['images'] = array();
 		while( $image = mysql_fetch_assoc($image_result) ) {
 			$row['images'][] = $image;

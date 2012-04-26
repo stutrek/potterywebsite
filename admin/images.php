@@ -14,12 +14,8 @@ if( isset( $_REQUEST['save'] ) ) {
 
 $product_a = select( 'products', array( 'id' => $_REQUEST['product_id'] ), '*', 1 );
 if( isset( $_REQUEST['update_images'] ) ) {
-	foreach( $_REQUEST['images'] as $id => $update_a ) {
-		update( 'productimages', $update_a, array( 'id' => $id ), 1 );
-	}
-	update( 'products', array( 'product' => $_REQUEST['main'] ), array( 'id' => $product_a['id'] ), 1 );
+	update( 'products', array( 'image_id' => $_REQUEST['main'] ), array( 'id' => $product_a['id'] ), 1 );
 	$product_a['image_id'] = $_REQUEST['main'];
-	$product_a['thumb_id'] = $_REQUEST['thumb'];
 }
 
 if( isset( $_REQUEST['add_image'] ) ) {
