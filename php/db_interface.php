@@ -4,6 +4,7 @@ require("db_setup.php");
 $product_fields = array( 'title', 'description', 'type', 'price', 'available', 'awesomeness' );
 
 function create_safe_product( $product ) {
+	global $product_fields;
 	$safe_product = array();
 	foreach( $product_fields as $field ) {
 		if (!isset($product[$field])) {
@@ -12,6 +13,14 @@ function create_safe_product( $product ) {
 		$safe_product[$field] = mysql_real_escape_string($product[$field]);
 	}
 	return $safe_product;
+}
+
+function create_clause( $fields ) {
+	$query_string = '';
+	foreach($fields as $key => $val) {
+		$query_string .= " `$key`='$val.',";
+	}
+	return substr( $query_string, 0, strlen($query_string)-1 );
 }
 
 function get_all_products_from_result( $result ) {
@@ -56,10 +65,7 @@ function add_product( $product ) {
 	$db_product['date_added'] = 'now()';
 	
 	$query_string = "INSERT INTO `products` SET";
-	foreach($db_product as $key => $val) {
-		$query_string .= " `$key`='$val',";
-	}
-	$query_string = substr( $query_string, 0, strlen($query_string)-1 );
+	$query_string .= create_clause( $db_product );
 	
 	mysql_query($query_string) or die("Error inserting product. Query was: $query_string");
 	
@@ -74,13 +80,10 @@ function update_product( $product ) {
 	$db_product = create_safe_product($product);
 	
 	$query_string = 'UPDATE `products` SET';
-	foreach( $db_product as $key => $val ) {
-		$query_string .= " `$key`='$val',";
-	}
-	$query_string = substr( $query_string, 0, strlen($query_string)-1 );
+	$query_string .= create_clause( $db_product );
 	
 	$query_string .= " WHERE `id`=$product[id] LIMIT 1";
-	
+	echo $query_string;
 	mysql_query($query_string);
 }
 
