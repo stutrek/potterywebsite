@@ -2,7 +2,7 @@
 require("php/db_interface.php");
 header('content-type: text/plain');
 
-$product = get_product($_REQUEST['id']);
+$product = get_product($_GET['id']);
 
 $product['available'] = 0;
 
