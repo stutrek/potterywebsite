@@ -49,7 +49,7 @@
 			<div class="description">${description}</div>
 			<div class="price">$${price}
 			</div>
-			<form target='paypal' action='https://www.sandbox.paypal.com/cgi-bin/webscr' method='post'>
+			<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
 				<input type='hidden' name='cmd' value='_xclick' />
 				<input type='hidden' name='business' value='sakabako@gmail.com'/>
 				<input type='hidden' name='item_name' value="${title}"/>
