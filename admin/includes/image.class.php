@@ -145,7 +145,7 @@ class image {
 	
 	function save( $image, $path, $format='jpeg' ) {
 		$function = 'image'.$format;
-		return( $function( $image, $path, 70 ) );
+		return( $function( $image, $path, 80 ) );
 	}
 }
 
