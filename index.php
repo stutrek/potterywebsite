@@ -63,7 +63,6 @@
 					<input type='hidden' name='shipping2' value='0'/>
 					<input type='hidden' name='notify_url' value="http://stuartaaron.com/return.php?product=${id}" />
 					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-					<input type="submit" />
 				</form>
 			{{/if}}
 			<ul class="imageselector">
