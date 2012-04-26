@@ -66,9 +66,11 @@
 					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
 				</form>
 			{{/if}}
-			<ul class="imageselector">
-				{{each images}}<li><a href="#" data-src="./productimages/700/${filename}"><img src="./productimages/100/${filename}" alt="" /></a></li>{{/each}}
-			</ul>
+			{{if images.length > 1}}
+				<ul class="imageselector">
+					{{each images}}<li><a href="#" data-src="./productimages/700/${filename}"><img src="./productimages/100/${filename}" alt="" /></a></li>{{/each}}
+				</ul>
+			{{/if}}
 		</div>
 	</script>
 	<script src="./js/lib/prototypes.js"></script>
