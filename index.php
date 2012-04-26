@@ -49,6 +49,7 @@
 			<img src="./productimages/700/${images[0].filename}" class="productimage" alt="" />
 		</div>
 		<div class="productinfo">
+			<h2>${title}</h2>
 			<div class="description">${description}</div>
 			{{if available == '1'}}
 				<div class="price">$${price}
@@ -66,9 +67,7 @@
 				</form>
 			{{/if}}
 			<ul class="imageselector">
-				{{each images}}
-					<li><a href="#" data-src="./productimages/700/${filename}"><img src="./productimages/100/${filename}" alt="" /></a></li>
-				{{/each}}
+				{{each images}}<li><a href="#" data-src="./productimages/700/${filename}"><img src="./productimages/100/${filename}" alt="" /></a></li>{{/each}}
 			</ul>
 		</div>
 	</script>

@@ -72,7 +72,16 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: 250px;
+	width: 240px;
+}
+#product_display_container h2 {
+	margin: 0;
+}
+#product_display_container .description {
+	margin: 1em 0;
+}
+#product_display_container form {
+	margin: 1em 0;
 }
 #product_display_container ul.imageselector {
 	margin: 0;
