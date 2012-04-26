@@ -51,7 +51,7 @@ function get_available_products() {
 }
 
 function get_all_products() {
-	$result = mysql_query("SELECT * FROM products ORDER BY date_added DESC");
+	$result = mysql_query("SELECT * FROM products ORDER BY available DESC, date_added DESC");
 	return get_all_products_from_result( $result );
 }
 

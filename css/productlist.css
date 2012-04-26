@@ -10,7 +10,15 @@
 	height: 113px;
 	width: 150px;
 	margin: 10px;
+	position: relative;
 }
 #content a.product:hover {
 	text-decoration: none;
+}
+
+#content a.product .unavailablemessage {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: black;
 }

@@ -1,7 +1,7 @@
 <?php
 require('db_interface.php');
 
-$output = get_available_products();
+$output = get_all_products();
 
 header('content-type: application/json');
 
