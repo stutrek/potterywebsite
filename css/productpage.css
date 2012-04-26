@@ -70,9 +70,9 @@
 }
 #product_display_container .productinfo {
 	position: absolute;
-	right: 0;
+	right: 10px;
 	top: 0;
-	width: 240px;
+	width: 230px;
 }
 #product_display_container h2 {
 	margin: 0;
