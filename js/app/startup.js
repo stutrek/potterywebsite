@@ -18,7 +18,6 @@ define(function(require, exports, module) {
 			var productId = event.currentTarget.getAttribute('data-product-id')
 			if (productId) {
 				var product = productRepository.getById(productId);
-				
 				productPage.show(products, products.indexOf(product));
 			}
 		});

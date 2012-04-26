@@ -69,7 +69,7 @@ function add_image( $tmp_path, $item_a ) {
 		$large_thumb_path = ROOT_PATH.LARGE_THUMB_PATH.$file_name;
 		
 		if( $image->save( $image_r, $destination_path ) ) {
-			$image_r = $image->resize( $image_r, 750, 750 );
+			$image_r = $image->resize( $image_r, 700, 700 );
 			if( $image->save( $image_r, $medium_path ) ) {
 				$image_r = $image->resize( $image_r, 150, 150 );
 				if( $image->save( $image_r, $large_thumb_path ) ) {
