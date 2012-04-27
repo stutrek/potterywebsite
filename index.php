@@ -1,7 +1,12 @@
-<!doctype html>
+<?php
+//phpinfo();
+
+$basedir = dirname($_SERVER['SCRIPT_NAME']).'/';
+?><!doctype html>
 <html>
 <head>
 	<title>Stuart Aaron Ceramics by Stu Kabakoff</title>
+	<base href="<?php echo $basedir; ?>" />
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<link rel="stylesheet" href="./css/footer.css">
@@ -82,7 +87,7 @@
 	<script src="./js/lib/jquery.js"></script>
 	<script src="./js/lib/jquery.tmpl.js"></script>
 	<script src="./js/lib/jquery.ba-hashchange.min"></script>
-	<script src="./js/lib/sea.js" data-main="./js/app/startup"></script>
+	<script src="./js/lib/sea.js" data-main="<?php echo $basedir ?>js/app/startup"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-31225099-1']);
