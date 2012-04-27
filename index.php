@@ -68,7 +68,7 @@
 			{{/if}}
 			{{if images.length > 1}}
 				<ul class="imageselector">
-					{{each(i, image) images}}<li><a href="#!product/${id}/${i}/${title}"><img src="./productimages/100/${image.filename}" alt="" /></a></li>{{/each}}
+					{{each(i, image) images}}<li><a href="#!product/${product_id}/${i}/${title}"><img src="./productimages/100/${image.filename}" alt="" /></a></li>{{/each}}
 				</ul>
 			{{/if}}
 		</div>
