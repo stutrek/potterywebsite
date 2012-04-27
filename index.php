@@ -58,18 +58,18 @@
 			<div class="description">${description}</div>
 			{{if available == '1'}}
 				<div class="price">$${parseInt(price, 10)}
+					<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+						<input type='hidden' name='cmd' value='_xclick' />
+						<input type='hidden' name='business' value='sakabako@gmail.com'/>
+						<input type='hidden' name='item_name' value="${title}"/>
+						<input type='hidden' name='item_number' value='${id}'/>
+						<input type='hidden' name='amount' value='${price}'/>
+						<input type='hidden' name='shipping' value='0'/>
+						<input type='hidden' name='shipping2' value='0'/>
+						<input type='hidden' name='notify_url' value="http://stuartaaron.com/return.php?product=${id}" />
+						<input type="image" src="./images/buy.png" border="0" name="submit" alt="Buy with PayPal" />
+					</form>
 				</div>
-				<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
-					<input type='hidden' name='cmd' value='_xclick' />
-					<input type='hidden' name='business' value='sakabako@gmail.com'/>
-					<input type='hidden' name='item_name' value="${title}"/>
-					<input type='hidden' name='item_number' value='${id}'/>
-					<input type='hidden' name='amount' value='${price}'/>
-					<input type='hidden' name='shipping' value='0'/>
-					<input type='hidden' name='shipping2' value='0'/>
-					<input type='hidden' name='notify_url' value="http://stuartaaron.com/return.php?product=${id}" />
-					<input type="image" src="./images/buy.png" border="0" name="submit" alt="Buy with PayPal" />
-				</form>
 			{{/if}}
 			{{if images.length > 1}}
 				<ul class="imageselector">

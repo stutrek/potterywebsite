@@ -92,7 +92,11 @@
 	margin: 1em 0;
 }
 #product_display_container form {
-	margin: 1em 0;
+	display: inline;
+}
+#product_display_container form input {
+	vertical-align: baseline;
+	margin: 0 0 -7px 7px;
 }
 #product_display_container ul.imageselector {
 	margin: 0 0 0 0;
