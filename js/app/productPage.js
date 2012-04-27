@@ -33,6 +33,10 @@ define(function(require, exports, module) {
 		if (index >= products.length) {
 			index = products.length-1;
 		}
+		if (index === currentIndex) {
+			return;
+		}
+		
 		container$.empty();
 		var renderedTemplate$ = $.tmpl(TEMPLATE_NAME, products[index]);
 		renderedTemplate$.appendTo(container$)
