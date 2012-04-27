@@ -123,6 +123,6 @@ define(function(require, exports, module) {
 		popup$.removeClass('showing');
 		$(document).off('keyup', keyListener);
 		showing = false;
-		currentIndex = 0;
+		currentIndex = -1;
 	};
 });
