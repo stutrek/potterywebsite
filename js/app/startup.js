@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 	var products = [];
 	
-	require.async(['./productRepository', './productList', './productPage'], function(productRepository, productList, productPage) {
+	require.async(['./productRepository', './productList', './productPage', './staticPages'], function(productRepository, productList, productPage, staticPages) {
 		
 		function recieveProducts( newProducts ) {
 			products = newProducts;
@@ -13,6 +13,7 @@ define(function(require, exports, module) {
 		
 		var repositoryPromise = productRepository.loadAll();
 		productList.init();
+		staticPages.init();
 		
 		repositoryPromise.done(recieveProducts);
 		repositoryPromise.fail(productList.error);

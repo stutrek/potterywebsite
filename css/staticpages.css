@@ -1,0 +1,15 @@
+.static {
+	display: none;
+	background-color: white;
+	padding: 1em;
+}
+.static p {
+	margin: 0;
+	text-indent: 1.5em;
+	line-height: 1.5;
+}
+
+#static_hide {
+	margin-top: 0;
+	text-align: right;
+}

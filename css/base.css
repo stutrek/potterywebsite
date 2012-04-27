@@ -14,7 +14,7 @@ a:hover {
 }
 
 
-#header_content, #content, #footer {
+#header_content, #content, #footer, .static {
 	width: 700px;
 	margin: auto;
 }

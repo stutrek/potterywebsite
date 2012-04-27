@@ -7,17 +7,23 @@
 	<link rel="stylesheet" href="./css/footer.css">
 	<link rel="stylesheet" href="./css/productlist.css">
 	<link rel="stylesheet" href="./css/productpage.css">
+	<link rel="stylesheet" href="./css/staticpages.css">
 </head>
 <body>
 	<div id="header">
 		<div id="header_content">
-			<img src="./images/stuartaaron.png" height="100" width="200" alt="Stuart Aaron Pottery">
+			<img src="./images/stuartaaron.png" height="68" width="420" alt="Stuart Aaron Ceramics by Stuart Aaron Kabakoff">
 			<div id="links">
-				<a href="./about">About</a>
-				<a href="./contact">Contact</a>
-				<a href="./commissions">Commissions</a>
+				<a href="#!about">About</a>
 			</div>
 		</div>
+	</div>
+	<div id="static_about" class="static">
+		<p>Stuart Aaron Kabakoff is a studio potter at <a href="http://www.lamanopottery.com/" target="_blank">La Mano Pottery</a> in Chelsea, NYC. He throws and handbuilds functional pottery.</p>
+		<p>In his toolkit he has an Egg-Bot spherical plotter that is used for engraving and sgraffito. <a href="http://www.youtube.com/watch?v=_f8DgePmaSg">See a video.</a></p>
+	</div>
+	<div id="static_hide" class="static">
+		<a href="#">Hide</a>
 	</div>
 	<div id="content">
 		<div class="loading">Loading Website...</div>
