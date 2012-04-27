@@ -6,7 +6,9 @@ $basedir = dirname($_SERVER['SCRIPT_NAME']).'/';
 <html>
 <head>
 	<title>Stuart Aaron Ceramics by Stu Kabakoff</title>
-	<base href="<?php echo $basedir; ?>" />
+	<? if (strlen($basedir) > 2) {
+		echo "<base href='$basedir' />";
+	}?>
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<link rel="stylesheet" href="./css/footer.css">
