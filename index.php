@@ -77,5 +77,10 @@
 	<script src="./js/lib/jquery.js"></script>
 	<script src="./js/lib/jquery.tmpl.js"></script>
 	<script src="./js/lib/sea.js" data-main="./js/app/startup"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-31225099-1']);
+		_gaq.push(['_trackPageview']);
+	</script>
 </body>
 </html>
