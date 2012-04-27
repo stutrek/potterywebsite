@@ -62,7 +62,6 @@ define(function(require, exports, module) {
 		$.template( TEMPLATE_NAME, templateString );
 		
 		popup$.on('click', '.next', exports.showNext);
-		popup$.on('click', '.previous', exports.showPrevious);
 		
 		container$.on('click', 'a[data-src]', thumbnailImageClick);
 	};
