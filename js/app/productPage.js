@@ -50,7 +50,7 @@ define(function(require, exports, module) {
 	
 	function thumbnailImageClick( event ) {
 		var newSrc = event.currentTarget.getAttribute('data-src');
-		container$.find('.productimage').attr('src', newSrc);
+		container$.find('.productimage img').attr('src', newSrc);
 	}
 	
 	exports.init = function() {
