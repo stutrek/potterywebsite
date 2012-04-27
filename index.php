@@ -2,13 +2,14 @@
 //phpinfo();
 
 $basedir = dirname($_SERVER['SCRIPT_NAME']).'/';
+if (strlen($basedir) < 3) {
+	$basedir = './';
+}
 ?><!doctype html>
 <html>
 <head>
 	<title>Stuart Aaron Ceramics by Stu Kabakoff</title>
-	<? if (strlen($basedir) > 2) {
-		echo "<base href='$basedir' />";
-	}?>
+	<base href="<?php echo $basedir; ?>" />
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<link rel="stylesheet" href="./css/footer.css">
