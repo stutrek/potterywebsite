@@ -79,6 +79,7 @@
 	right: 10px;
 	top: 0;
 	width: 230px;
+	bottom: 0;
 }
 #product_display_container h2 {
 	margin: 0;
@@ -93,6 +94,9 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 #product_display_container ul.imageselector li {
 	display: inline-block;
