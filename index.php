@@ -46,7 +46,7 @@
 	</script>
 	<script id="product_popup" type="text/template">
 		<div class="productimage">
-			<img src="./productimages/700/${images[0].filename}" class="productimage" alt="" />
+			<img src="./productimages/700/${images[0].filename}" alt="" />
 		</div>
 		<div class="productinfo">
 			<h2>${title}</h2>
