@@ -38,10 +38,13 @@ if( isset( $_REQUEST['delete'] ) ) {
 	$image = select( 'productimages', array( 'id' => $_REQUEST['delete'] ), '*', 1 );
 	$product_a = select( 'products', array( 'id' => $image['product_id'] ), '*', 1 );
 	dump($image);
-	unlink( ROOT_PATH.HUGE_IMAGE_PATH.$image['filename'] );
-	unlink( ROOT_PATH.LARGE_IMAGE_PATH.$image['filename'] );
-	unlink( ROOT_PATH.THUMB_PATH.$image['filename'] );
-	unlink( ROOT_PATH.LARGE_THUMB_PATH.$image['filename'] );
+	
+	$dirs = scandir("../productimages");
+	foreach( $dirs as $dir ) {
+		if (file_exists("../productimages/".$dir."/".$image['filename'])) {
+			unlink("../productimages/".$dir."/".$image['filename']);
+		}
+	}
 	
 	delete( 'productimages', array( 'id' => $image['id'] ), 1 );
 	

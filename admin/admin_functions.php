@@ -51,7 +51,7 @@ function is_checked( $value, $compare=true ) {
 
 
 function add_image( $tmp_path, $item_a ) {
-	require_once( 'includes/image.class.php' );
+	require_once( '../php/image.class.php' );
 	$feedback = true;
 	
 	$image = new image();
@@ -69,32 +69,7 @@ function add_image( $tmp_path, $item_a ) {
 		$large_thumb_path = ROOT_PATH.LARGE_THUMB_PATH.$file_name;
 		
 		if( $image->save( $image_r, $destination_path ) ) {
-			$image_r = $image->resize( $image_r, 700, 700 );
-			if( $image->save( $image_r, $medium_path ) ) {
-				$image_r = $image->resize( $image_r, 150, 150 );
-				if( $image->save( $image_r, $large_thumb_path ) ) {
-				$image_r = $image->resize( $image_r, 100, 100 );
-					if( $image->save( $image_r, $thumb_path ) ) {
-						update( 'productimages', array( 'filename' => $file_name ), array( 'id' => $id ), 1 );
-						$feedback = 'Saved image '.$i.'. ('.$description.')';
-					} else {
-						delete( 'productimages', array( 'id' => $id ), 1 );
-						unlink( $large_thumb_path );
-						unlink( $destination_path );
-						unlink( $medium_path );
-						$feedback = 'There was a problem saving the thumb of image '.$i.'. ('.$description.').';
-					}
-				} else {
-					delete( 'productimages', array( 'id' => $id ), 1 );
-					unlink( $destination_path );
-					unlink( $medium_path );
-					$feedback = 'There was a problem saving the large thumb of image '.$i.'. ('.$description.').';
-				}
-			} else {
-				unlink( $destination_path );
-				delete( 'productimages', array( 'id' => $id ), 1 );
-				$feedback = 'There was a problem saving the medium sized version of image '.$i.'. ('.$description.').';
-			}
+			update( 'productimages', array( 'filename' => $file_name ), array( 'id' => $id ), 1 );
 		} else {
 			delete( 'productimages', array( 'id' => $id ), 1 );
 			$feedback = 'There was a problem saving image '.$i.'. ('.$description.').';
