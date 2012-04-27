@@ -68,7 +68,7 @@
 			{{/if}}
 			{{if images.length > 1}}
 				<ul class="imageselector">
-					{{each images}}<li><a href="#" data-src="./productimages/700/${filename}"><img src="./productimages/100/${filename}" alt="" /></a></li>{{/each}}
+					{{each(i, image) images}}<li><a href="#!product/${id}/${i}/${title}"><img src="./productimages/100/${image.filename}" alt="" /></a></li>{{/each}}
 				</ul>
 			{{/if}}
 		</div>
@@ -76,6 +76,7 @@
 	<script src="./js/lib/prototypes.js"></script>
 	<script src="./js/lib/jquery.js"></script>
 	<script src="./js/lib/jquery.tmpl.js"></script>
+	<script src="./js/lib/jquery.ba-hashchange.min"></script>
 	<script src="./js/lib/sea.js" data-main="./js/app/startup"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
