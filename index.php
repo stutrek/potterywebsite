@@ -26,8 +26,7 @@
 	
 	</div>
 	<div id="product_page">
-		<div class="screen">
-		</div>
+		<a class="screen" href="#"></a>
 		<div class="product_display_container-border">
 			<div id="product_display_container">
 				<a href="#" class="previous"><span>previous</span></a>

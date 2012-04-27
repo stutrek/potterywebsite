@@ -15,7 +15,7 @@ define(function(require, exports, module) {
 	function keyListener( event ) {
 		switch (event.keyCode ) {
 			case 27: // escape
-				exports.hide();
+				window.location.hash = '';
 				break;
 			case 39: // right arrow
 				exports.showNext();
@@ -122,7 +122,7 @@ define(function(require, exports, module) {
 	exports.hide = function() {
 		popup$.removeClass('showing');
 		$(document).off('keyup', keyListener);
-		window.location.hash = '';
 		showing = false;
+		currentIndex = 0;
 	};
 });
