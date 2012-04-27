@@ -109,11 +109,9 @@ define(function(require, exports, module) {
 	};
 	
 	exports.showNext = function() {
-		//showIndex(currentIndex+1);
 		window.location.hash = '!product/'+products[currentIndex+1].id+'/'+products[currentIndex+1].title;
 	};
 	exports.showPrevious = function() {
-		//showIndex(currentIndex-1);
 		window.location.hash = '!product/'+products[currentIndex-1].id+'/'+products[currentIndex-1].title;
 	};
 	
