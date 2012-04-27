@@ -25,6 +25,9 @@ define(function(require, exports, module) {
 				break;
 		}
 	}
+	function makeHash( i ) {
+		return '#!product/'+products[i].id+'/'+products[i].title
+	}
 	
 	function showIndex( index ) {
 		if (index < 0) {
@@ -45,14 +48,14 @@ define(function(require, exports, module) {
 			previous$.hide();
 		} else {
 			previous$.show();
-			previous$.attr( 'href', '#!product/'+products[index-1].id+'/'+products[index-1].title);
+			previous$.attr( 'href', makeHash(index-1));
 		}
 		
 		if (index === products.length-1) {
 			next$.hide();
 		} else {
 			next$.show();
-			next$.attr( 'href', '#!product/'+products[index+1].id+'/'+products[index+1].title);
+			next$.attr( 'href',  makeHash(index+1));
 		}
 		
 		currentIndex = index;
@@ -113,10 +116,10 @@ define(function(require, exports, module) {
 	};
 	
 	exports.showNext = function() {
-		window.location.hash = '!product/'+products[currentIndex+1].id+'/'+products[currentIndex+1].title;
+		window.location.hash =  makeHash(index+1);
 	};
 	exports.showPrevious = function() {
-		window.location.hash = '!product/'+products[currentIndex-1].id+'/'+products[currentIndex-1].title;
+		window.location.hash =  makeHash(index-1);
 	};
 	
 	exports.hide = function() {
