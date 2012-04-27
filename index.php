@@ -53,7 +53,7 @@ if (strlen($basedir) > 1) {
 		<a class="product" href="#!product/${id}/${title}" data-product-id="${id}">
 			<img src="./productimages/150/${images[0].filename}" alt="" />
 			{{if available == '0'}}
-				<span class="unavailablemessage">taken</span>
+				<span class="unavailablemessage">sold</span>
 			{{/if}}
 		</a>
 	</script>
