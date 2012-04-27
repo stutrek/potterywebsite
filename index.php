@@ -51,7 +51,7 @@
 			<h2>${title}</h2>
 			<div class="description">${description}</div>
 			{{if available == '1'}}
-				<div class="price">$${price}
+				<div class="price">$${parseInt(price, 10)}
 				</div>
 				<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
 					<input type='hidden' name='cmd' value='_xclick' />
