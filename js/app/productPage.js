@@ -116,10 +116,10 @@ define(function(require, exports, module) {
 	};
 	
 	exports.showNext = function() {
-		window.location.hash =  makeHash(index+1);
+		window.location.hash =  makeHash(currentIndex+1);
 	};
 	exports.showPrevious = function() {
-		window.location.hash =  makeHash(index-1);
+		window.location.hash =  makeHash(currentIndex-1);
 	};
 	
 	exports.hide = function() {
