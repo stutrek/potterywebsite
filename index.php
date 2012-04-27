@@ -1,9 +1,9 @@
 <?php
 //phpinfo();
 
-$basedir = dirname($_SERVER['SCRIPT_NAME']).'/';
-if (strlen($basedir) < 3) {
-	$basedir = './';
+$basedir = dirname($_SERVER['SCRIPT_NAME']);
+if (strlen($basedir) > 1) {
+	$basedir .= '/';
 }
 ?><!doctype html>
 <html>
