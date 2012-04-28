@@ -1,4 +1,4 @@
-<a class="product" href="./product/${id}/${title}" data-product-id="${id}">
+{{if !id}}this fixes a bug in the PHP templating in some versions of PHP.{{/if}}<a class="product" href="./product/${id}/${title}" data-product-id="${id}">
 	<img src="./productimages/150/${filename}" alt="" />
 	{{if !available}}
 		<span class="unavailablemessage">sold</span>

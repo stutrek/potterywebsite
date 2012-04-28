@@ -97,7 +97,7 @@ class jqTmpl {
 		}
 
 		// regex from jquery-tmpl, modified for named subpatterns
-		preg_match_all( '/\{\{(?<slash>\/?)(?<type>\w+|.)(?:\((?<fnargs>(?:[^\}]|\}(?!\}))*?)?\))?(?:\s+(?<target>.*?)?)?(?<parens>\((?<args>(?:[^\}]|\}(?!\}))*?)\))?\s*\}\}/', $tmpl_string, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE );
+		preg_match_all( '/\{\{(?<slash>\/?)(?<type>\w+|!|.)(?:\((?<fnargs>(?:[^\}]|\}(?!\}))*?)?\))?(?:\s+(?<bang>!?)(?<target>.*?)?)?(?<parens>\((?<args>(?:[^\}]|\}(?!\}))*?)\))?\s*\}\}/', $tmpl_string, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE );
 
 		$state = array(
 			'eof' => strlen($tmpl_string), // length of the template string
@@ -166,9 +166,10 @@ class jqTmpl {
 
 				$pos = $match[0][1];
 			}
-
+			
 			$type = $match['type'][0];
 			$target = isset($match['target']) ? $match['target'][0] : null;
+			$bang = (bool)$match['bang'];
 			$slash = $match['slash'][0] == '/';
 
 			$this->debug("type is [%s%s]; target is [%s]\n", $slash ? '/' : '', $type, $target);
@@ -200,15 +201,9 @@ class jqTmpl {
 						              // parse modified it.
 						continue;
 					}
-					
-					if( $target[0] == '!' ) {
-						$target = substr($target, 1);
-						$skip = (bool)$data->$target;
-					} else {
-						$skip = (bool)$data->$target == false;
-					}
-					
+					$skip = (bool)$data->$target == $bang;
 					$html .= $this->parse( $tmpl, $data, $matches, $state );
+					$skip = false;
 				}
 
 				// closing tag
@@ -296,6 +291,7 @@ class jqTmpl {
 
 			// {{! comment}}
 			elseif( $type == '!' ) {
+				var_dump('COMMENT');
 				// "comment tag, skipped by parser"
 			}
 
