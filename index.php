@@ -60,10 +60,38 @@ $products = get_all_products();
 	<?php
 	if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
 		$product = get_product( $uriArray[1] );
-		if ($product->images[$uriArray[2]]) {
-			$product->filename = $product->images[$uriArray[2]]->filename;
-		}
-		echo '<div class="static" style="display:block">'.$t->tmpl( $templates['templates/productpage.html'], $product ).'</div>';
+		
+		echo '<div class="static" style="display:block">
+				<div class="productimage">
+					<img src="./productimages/700/'.$product->filename.'" alt="" />
+				</div>
+				<div class="productinfo">
+					<h2>'.$product->title.'</h2>
+					<div class="description">'.$product->description.'</div>';
+					if( $product->available ) {
+						'<div class="price">$'.$product->price."
+						<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+							<input type='hidden' name='cmd' value='_xclick' />
+							<input type='hidden' name='business' value='sakabako@gmail.com'/>
+							<input type='hidden' name='item_name' value='$product->title'/>
+							<input type='hidden' name='item_number' value='$product->id'/>
+							<input type='hidden' name='amount' value='$product->price'/>
+							<input type='hidden' name='shipping' value='0'/>
+							<input type='hidden' name='shipping2' value='0'/>
+							<input type='hidden' name='notify_url' value='http://stuartaaron.com/return.php?product=$product->id' />
+							<input type='image' src='./images/buy.png' border='0' name='submit' alt='Buy with PayPal' />
+						</form>
+						</div>";
+					}
+					if( $product->hasMultipleImages ) {
+						echo '<ul class="imageselector">';
+						foreach( $product->images as $image ) {
+							echo '<li><a href="./product/'.$image->url.'"><img src="./productimages/115/'.$image->filename.'" alt="" /></a></li>';
+						}
+						echo '</ul>';
+					}
+				echo '</div>
+			</div>';
 	}
 	?>
 	<div id="content">
