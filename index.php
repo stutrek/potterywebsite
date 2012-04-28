@@ -37,9 +37,9 @@ $products = get_all_products();
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<link rel="stylesheet" href="./css/footer.css">
+	<link rel="stylesheet" href="./css/staticpages.css">
 	<link rel="stylesheet" href="./css/productlist.css">
 	<link rel="stylesheet" href="./css/productpage.css">
-	<link rel="stylesheet" href="./css/staticpages.css">
 </head>
 <body>
 	<div id="header">
@@ -61,7 +61,7 @@ $products = get_all_products();
 	if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
 		$product = get_product( $uriArray[1] );
 		
-		echo '<div class="static" style="display:block">
+		echo '<div class="static product_display_container" style="display:block">
 				<div class="productimage">
 					<img src="./productimages/700/'.$product->filename.'" alt="" />
 				</div>
