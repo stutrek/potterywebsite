@@ -60,10 +60,14 @@ $products = get_all_products();
 	<?php
 	if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
 		$product = get_product( $uriArray[1] );
-		
+		if ( $product->images[$uriArray[2]] ) {
+			$image_index = $uriArray[2];
+		} else {
+			$image_index = 0;
+		}
 		echo '<div class="static product_display_container" style="display:block">
 				<div class="productimage">
-					<img src="./productimages/700/'.$product->filename.'" alt="" />
+					<img src="./productimages/700/'.$product->images[$image_index]->filename.'" alt="" />
 				</div>
 				<div class="productinfo">
 					<h2>'.$product->title.'</h2>
