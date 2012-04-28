@@ -67,7 +67,7 @@ $products = get_all_products();
 	}
 	?>
 	<div id="content">
-		<? echo $t->tmpl( $templates['templates/productlist.html'], $products ); ?>
+		<div class="loading">Loading Website...</div>
 	</div>
 	<div id="footer">
 	
