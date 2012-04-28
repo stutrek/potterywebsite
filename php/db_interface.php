@@ -35,7 +35,7 @@ function get_all_products_from_result( $result ) {
 		$row->images = array();
 		$image_i = 0;
 		while( $image = mysql_fetch_object($image_result) ) {
-			$image->url = './'.$row->id.'/'.$image_i.'/'.$row->title;
+			$image->url = $row->id.'/'.$image_i.'/'.$row->title;
 			$row->images[] = $image;
 			$image_i += 1;
 		}
