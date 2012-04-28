@@ -86,7 +86,7 @@ $products = get_all_products();
 	<script src="./js/lib/prototypes.js"></script>
 	<script src="./js/lib/jquery.js"></script>
 	<script src="./js/lib/jquery.tmpl.js"></script>
-	<script src="./js/lib/jquery.ba-hashchange.min"></script>
+	<script src="./js/lib/jquery.ba-hashchange.min.js"></script>
  	<script src="./js/lib/sea.js" data-main="<?php echo $basedir ?>js/app/startup"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
