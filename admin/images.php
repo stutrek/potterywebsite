@@ -8,10 +8,10 @@ if( isset( $_REQUEST['save'] ) ) {
 	
 	$id = $_REQUEST['product_id'];
 	
-	send_to( 'products.php' );
+	header( 'location:products.php' );
+	exit;
 	
 }
-
 $product_a = select( 'products', array( 'id' => $_REQUEST['product_id'] ), '*', 1 );
 if( isset( $_REQUEST['update_images'] ) ) {
 	update( 'products', array( 'image_id' => $_REQUEST['main'] ), array( 'id' => $product_a['id'] ), 1 );
@@ -19,7 +19,7 @@ if( isset( $_REQUEST['update_images'] ) ) {
 }
 
 if( isset( $_REQUEST['add_image'] ) ) {
-	for( $i = 0; $i < count( $_FILES['images']['name'] ); $i++ ) {
+	for( $i = 0; $i < count( $_FILES['images']['tmp_name'] ); $i++ ) {
 		if ($_FILES['images']['tmp_name'][$i]) {
 			$worked = add_image(  $_FILES['images']['tmp_name'][$i], $product_a );
 			if( !is_numeric( $worked ) ) {

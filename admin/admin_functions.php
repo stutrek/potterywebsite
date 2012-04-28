@@ -1,8 +1,10 @@
 <?
 
+/*
 if( !$_SESSION['is_admin'] ) {
 	echo '<a href="index.php">Log back in</a>';
 }
+*/
 
 function link_array( $a, $type='' ) {
 	foreach( $a as $a_key => $b ) {
@@ -64,9 +66,6 @@ function add_image( $tmp_path, $item_a ) {
 		$file_name = $item_a['id'].'_'.$id.'.jpg';
 		update( 'productimages', array('filename' => $file_name ), array('id' => $id), 1 );
 		$destination_path = ROOT_PATH.HUGE_IMAGE_PATH.$file_name;
-		$medium_path = ROOT_PATH.LARGE_IMAGE_PATH.$file_name;
-		$thumb_path = ROOT_PATH.THUMB_PATH.$file_name;
-		$large_thumb_path = ROOT_PATH.LARGE_THUMB_PATH.$file_name;
 		
 		if( $image->save( $image_r, $destination_path ) ) {
 			update( 'productimages', array( 'filename' => $file_name ), array( 'id' => $id ), 1 );

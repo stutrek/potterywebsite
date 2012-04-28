@@ -1,8 +1,13 @@
+#content {
+	width: 850px;
+}
+
 #content .loading {
 	color: #666;
 	font-size: 3em;
 	text-align: center;
 	margin-top: 2em;
+	width: 970px;
 }
 
 #content a.product {

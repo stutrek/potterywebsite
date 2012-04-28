@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 	
 	var templateString;
 	var container$;
-	var TEMPLATE_NAME = "productListTemplate";	
+	var TEMPLATE_NAME = "templates/productlist.html";	
 	
 	function fillList(products) {
 		if (products) {
@@ -18,9 +18,7 @@ define(function(require, exports, module) {
 	}
 	
 	exports.init = function() {
-		templateString = document.getElementById('product_list_item').innerHTML;
 		container$ = $('#content');
-		$.template( TEMPLATE_NAME, templateString );
 	};
 	
 	exports.render = function(products) {

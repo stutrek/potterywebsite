@@ -30,13 +30,21 @@ function get_all_products_from_result( $result ) {
 	
 	$return = array();
 	
-	while($row = mysql_fetch_assoc($result)) {
-		$image_result = mysql_query("SELECT * FROM productimages WHERE product_id=$row[id] ORDER BY (ID != $row[image_id])");
-		$row['images'] = array();
-		while( $image = mysql_fetch_assoc($image_result) ) {
-			$row['images'][] = $image;
+	while($row = mysql_fetch_object($result)) {
+		$image_result = mysql_query("SELECT * FROM productimages WHERE product_id=$row->id ORDER BY (ID != $row->image_id)");
+		$row->images = array();
+		$image_i = 0;
+		while( $image = mysql_fetch_object($image_result) ) {
+			$image->url = './'.$row->id.'/'.$image_i.'/'.$row->title;
+			$row->images[] = $image;
+			$image_i += 1;
 		}
-		if( $row['images'] ) {
+		$row->hasMultipleImages = count($row->images) > 1;
+		$row->filename = $row->images[0]->filename;
+		$row->price = intVal($row->price);
+		$row->available = $row->available === '1';
+		
+		if( count($row->images) ) {
 			$return[] = $row;
 		}
 	}
@@ -83,7 +91,6 @@ function update_product( $product ) {
 	$query_string .= create_clause( $db_product );
 	
 	$query_string .= " WHERE `id`=$product[id] LIMIT 1";
-	echo $query_string;
 	mysql_query($query_string);
 }
 

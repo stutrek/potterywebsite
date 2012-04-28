@@ -1,6 +1,7 @@
 <?
 require_once( 'includes/initialize.php' );
 require_once( 'admin_functions.php');
+
 if( isset( $_REQUEST['save'] ) ) {
 	
 	$item_a = $_REQUEST['item'];
@@ -17,27 +18,18 @@ if( isset( $_REQUEST['save'] ) ) {
 	if( $id ) {
 		update( 'products', $item_a, array( 'id' => $id ), 1 );
 	} else {
+		$item_a['date_added'] = 'sql:now()';
 		$new_id = insert( 'products', $item_a );
 		$item_a['id'] = $new_id;
 	}
 	
-	$attributes = $_REQUEST['attrs'];
-	
-	for( $i = 0; $i < count( $_REQUEST['attributes'] ); $i++ ) {
-
-		$attributes[trim($_REQUEST['attributes'][$i])] = trim( $_REQUEST['values'][$i] );
-		
-	}
 	if( isset( $new_id ) ) {
-		for( $i = 0; $i < count( $_REQUEST['images'] ); $i++ ) {
-			foreach( $_FILES['images'] as $key => $val ) {
-				$file[$key] = $_FILES['images'][$key][$i];
-			}
-			$worked = add_image( $file['tmp_name'], $item_a, $_REQUEST['images'][$i] );
+		for( $i = 0; $i < count( $_FILES['images']['tmp_name'] ); $i++ ) {
+			$worked = add_image(  $_FILES['images']['tmp_name'][$i], $item_a );
 			if( !is_numeric( $worked ) ) {
 				$error[] = $worked;
 			} elseif( $i == 0 ) {
-				update( 'products', array( 'image_id' => $worked, 'thumb_id' => $worked ), array( 'id' => $new_id ), 1 );
+				update( 'products', array( 'image_id' => $worked ), array( 'id' => $new_id ), 1 );
 				$item_a['image_id'] = $worked;
 			}
 		}
@@ -109,7 +101,7 @@ if( !$item_a ) {
 						</td>
 					</tr>
 					<tr><td class="input_label">Price</td><td>$<input type="text" name="item[price]" size="7" value="<?= $item_a['price'];?>"></td></tr>
-					<tr><td class="input_label">Description</td><td><textarea name="item[description]" rows="5" cols="50"><?= $item_a['description']; ?></textarea>
+					<tr><td class="input_label">Description</td><td><textarea name="item[description]" rows="5" cols="50"><?= $item_a['description']; ?></textarea></td></tr>
 
 					<? if( !isset( $_REQUEST['new'] ) ) { ?>
 					<tr><td class="input_label"><? if( $_REQUEST['id'] ) { echo '<input type="hidden" name="id" value="'.$_REQUEST['id'].'">'; } ?>
@@ -125,7 +117,6 @@ if( !$item_a ) {
 					<div id="image_inputs">
 						<table>
 							<tr><td class="input_label">image</td><td><input type="file" name="images[0]" size="20" /></td></tr>
-td></tr>
 						</table>
 					</div>
 					<input type="submit" name="save" value="Save">

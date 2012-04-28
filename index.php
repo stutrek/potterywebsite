@@ -5,6 +5,30 @@ $basedir = dirname($_SERVER['SCRIPT_NAME']);
 if (strlen($basedir) > 1) {
 	$basedir .= '/';
 }
+
+$uriArray = explode( '/', $_SERVER['REQUEST_URI'] );
+$scriptArray = explode( '/', $_SERVER['SCRIPT_NAME'] );
+array_splice( $uriArray, 0, count($scriptArray)-1 );
+
+$templates = array();
+foreach( glob('templates/*.html') as $template_filename ) {
+	$templates[$template_filename] = file_get_contents( $template_filename );
+}
+$templates_string = '';
+foreach($templates as $key => $value) {
+	$templates_string .= "<script id='$key' type='text/x-jquery-tmpl'>$value</script>";
+}
+
+
+
+require 'php/db_interface.php';
+require 'php/jqTmpl.class.php';
+
+$t = new jqTmpl;
+$t->load_document($templates_string);
+
+$products = get_all_products();
+
 ?><!doctype html>
 <html>
 <head>
@@ -33,8 +57,17 @@ if (strlen($basedir) > 1) {
 	<div id="static_hide" class="static">
 		<a href="#">Hide</a>
 	</div>
+	<?php
+	if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
+		$product = get_product( $uriArray[1] );
+		if ($product->images[$uriArray[2]]) {
+			$product->filename = $product->images[$uriArray[2]]->filename;
+		}
+		echo '<div class="static" style="display:block">'.$t->tmpl( $templates['templates/productpage.html'], $product ).'</div>';
+	}
+	?>
 	<div id="content">
-		<div class="loading">Loading Website...</div>
+		<? echo $t->tmpl( $templates['templates/productlist.html'], $products ); ?>
 	</div>
 	<div id="footer">
 	
@@ -42,55 +75,19 @@ if (strlen($basedir) > 1) {
 	<div id="product_page">
 		<a class="screen" href="#"></a>
 		<div class="product_display_container-border">
-			<div id="product_display_container">
+			<div class="product_display_container">
 				<a href="#" class="previous"><span>previous</span></a>
 				<div class="content"></div>
 				<a href="#" class="next"><span>next</span></a>
 			</div>
 		</div>
 	</div>
-	<script id="product_list_item" type="text/template">
-		<a class="product" href="#!product/${id}/${title}" data-product-id="${id}">
-			<img src="./productimages/150/${images[0].filename}" alt="" />
-			{{if available == '0'}}
-				<span class="unavailablemessage">sold</span>
-			{{/if}}
-		</a>
-	</script>
-	<script id="product_popup" type="text/template">
-		<div class="productimage">
-			<img src="./productimages/700/${images[0].filename}" alt="" />
-		</div>
-		<div class="productinfo">
-			<h2>${title}</h2>
-			<div class="description">${description}</div>
-			{{if available == '1'}}
-				<div class="price">$${parseInt(price, 10)}
-					<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
-						<input type='hidden' name='cmd' value='_xclick' />
-						<input type='hidden' name='business' value='sakabako@gmail.com'/>
-						<input type='hidden' name='item_name' value="${title}"/>
-						<input type='hidden' name='item_number' value='${id}'/>
-						<input type='hidden' name='amount' value='${price}'/>
-						<input type='hidden' name='shipping' value='0'/>
-						<input type='hidden' name='shipping2' value='0'/>
-						<input type='hidden' name='notify_url' value="http://stuartaaron.com/return.php?product=${id}" />
-						<input type="image" src="./images/buy.png" border="0" name="submit" alt="Buy with PayPal" />
-					</form>
-				</div>
-			{{/if}}
-			{{if images.length > 1}}
-				<ul class="imageselector">
-					{{each(i, image) images}}<li><a href="#!product/${product_id}/${i}/${title}"><img src="./productimages/115/${image.filename}" alt="" /></a></li>{{/each}}
-				</ul>
-			{{/if}}
-		</div>
-	</script>
+	<?php echo $templates_string; ?>
 	<script src="./js/lib/prototypes.js"></script>
 	<script src="./js/lib/jquery.js"></script>
 	<script src="./js/lib/jquery.tmpl.js"></script>
 	<script src="./js/lib/jquery.ba-hashchange.min"></script>
-	<script src="./js/lib/sea.js" data-main="<?php echo $basedir ?>js/app/startup"></script>
+<!--  	<script src="./js/lib/sea.js" data-main="<?php echo $basedir ?>js/app/startup"></script> -->
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-31225099-1']);

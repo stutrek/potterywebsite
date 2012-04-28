@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	
-	var TEMPLATE_NAME = 'product_popup';
+	var TEMPLATE_NAME = 'templates/productpage.html';
 	var container$;
 	var popup$;
 	var screen$;
@@ -90,14 +90,12 @@ define(function(require, exports, module) {
 	}
 	exports.init = function( newProducts ) {
 		products = newProducts;
-		templateString = document.getElementById('product_popup').innerHTML;
-		container$ = $('#product_display_container .content');
+		container$ = $('#product_page .content');
 		popup$ = $('#product_page');
 		screen$ = popup$.find('.screen');
 		next$ = popup$.find('.next');
 		previous$ = popup$.find('.previous');
 		screen$.on('click', exports.hide);
-		$.template( TEMPLATE_NAME, templateString );
 		
 		$(window).on('hashchange', loadHash );
 		loadHash();

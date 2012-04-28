@@ -1,0 +1,27 @@
+<div class="productimage">
+	<img src="./productimages/700/${filename}" alt="" />
+</div>
+<div class="productinfo">
+	<h2>${title}</h2>
+	<div class="description">${description}</div>
+	{{if available}}
+		<div class="price">$${price}
+			<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+				<input type='hidden' name='cmd' value='_xclick' />
+				<input type='hidden' name='business' value='sakabako@gmail.com'/>
+				<input type='hidden' name='item_name' value="${title}"/>
+				<input type='hidden' name='item_number' value='${id}'/>
+				<input type='hidden' name='amount' value='${price}'/>
+				<input type='hidden' name='shipping' value='0'/>
+				<input type='hidden' name='shipping2' value='0'/>
+				<input type='hidden' name='notify_url' value="http://stuartaaron.com/return.php?product=${id}" />
+				<input type="image" src="./images/buy.png" border="0" name="submit" alt="Buy with PayPal" />
+			</form>
+		</div>
+	{{/if}}
+	{{if hasMultipleImages}}
+		<ul class="imageselector">
+			{{tmpl(images) "templates/productpageimagelist.html"}}
+		</ul>
+	{{/if}}
+</div>
