@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 		
 		function recieveProducts( newProducts ) {
 			products = newProducts;
-			productList.render( products );
+			//productList.render( products );
 			productPage.init( products );
 		}
 		
@@ -15,7 +15,7 @@ define(function(require, exports, module) {
 		staticPages.init();
 		
 		repositoryPromise.done(recieveProducts);
-		repositoryPromise.fail(productList.error);
+		//repositoryPromise.fail(productList.error);
 		
 		$(document).on('click', 'a', function(event) {
 			if (event.currentTarget.getAttribute('href').substr(0,2) === './') {
