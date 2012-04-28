@@ -73,7 +73,7 @@ $products = get_all_products();
 					<h2>'.$product->title.'</h2>
 					<div class="description">'.$product->description.'</div>';
 					if( $product->available ) {
-						'<div class="price">$'.$product->price."
+						echo '<div class="price">$'.$product->price."
 						<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
 							<input type='hidden' name='cmd' value='_xclick' />
 							<input type='hidden' name='business' value='sakabako@gmail.com'/>
