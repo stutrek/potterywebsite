@@ -19,8 +19,6 @@ foreach($templates as $key => $value) {
 	$templates_string .= "<script id='$key' type='text/x-jquery-tmpl'>$value</script>";
 }
 
-
-
 require 'php/db_interface.php';
 require 'php/jqTmpl.class.php';
 
@@ -49,13 +47,6 @@ $products = get_all_products();
 				<a href="#!about">About</a>
 			</div>
 		</div>
-	</div>
-	<div id="static_about" class="static">
-		<p>Stuart Aaron Kabakoff is a studio potter at <a href="http://www.lamanopottery.com/" target="_blank">La Mano Pottery</a> in Chelsea, NYC. He throws and handbuilds functional pottery.</p>
-		<p>In his toolkit he has an Egg-Bot spherical plotter that is used for engraving and sgraffito. <a href="http://www.youtube.com/watch?v=_f8DgePmaSg">See a video.</a></p>
-	</div>
-	<div id="static_hide" class="static">
-		<a href="#">Hide</a>
 	</div>
 	<?php
 	if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
@@ -98,6 +89,13 @@ $products = get_all_products();
 			</div>';
 	}
 	?>
+	<div id="static_about" class="static">
+		<p>Stuart Aaron Kabakoff is a studio potter at <a href="http://www.lamanopottery.com/" target="_blank">La Mano Pottery</a> in Chelsea, NYC. He throws and handbuilds functional pottery.</p>
+		<p>In his toolkit he has an Egg-Bot spherical plotter that is used for engraving and sgraffito. <a href="http://www.youtube.com/watch?v=_f8DgePmaSg">See a video.</a></p>
+	</div>
+	<div id="static_hide" class="static">
+		<a href="#">Hide</a>
+	</div>
 	<div id="content">
 		<? echo $t->tmpl( $templates['templates/productlist.html'], $products ); ?>
 	</div>
