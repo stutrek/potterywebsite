@@ -27,10 +27,20 @@ $t->load_document($templates_string);
 
 $products = get_all_products();
 
+if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
+	$product = get_product( $uriArray[1] );
+}
+
 ?><!doctype html>
 <html>
 <head>
-	<title>Stuart Aaron Ceramics by Stu Kabakoff</title>
+	<?php
+	if ($product) {
+		echo '<title>'.$product->title.'</title>';
+	} else {
+		echo '<title>Stuart Aaron Ceramics by Stu Kabakoff</title>';
+	}
+	?>
 	<base href="<?php echo $basedir; ?>" />
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/header.css">
@@ -49,8 +59,7 @@ $products = get_all_products();
 		</div>
 	</div>
 	<?php
-	if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
-		$product = get_product( $uriArray[1] );
+	if( $product ) {
 		if ( $product->images[$uriArray[2]] ) {
 			$image_index = $uriArray[2];
 		} else {
@@ -58,11 +67,11 @@ $products = get_all_products();
 		}
 		echo '<div class="static product_display_container" style="display:block">
 				<div class="productimage">
-					<img src="./productimages/700/'.$product->images[$image_index]->filename.'" alt="" />
+					<img src="'.$basedir.'productimages/700/'.$product->images[$image_index]->filename.'" alt="" />
 				</div>
 				<div class="productinfo">
 					<h2>'.$product->title.'</h2>
-					<div class="description">'.$product->description.'</div>';
+					<p>'.$product->description.'</p>';
 					if( $product->available ) {
 						echo '<div class="price">$'.$product->price."
 						<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
