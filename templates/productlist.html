@@ -1,6 +1,6 @@
 <a class="product" href="./product/${id}/${title}" data-product-id="${id}">
 	<img src="./productimages/150/${filename}" alt="" />
-	{{if available == '0'}}
+	{{if !available}}
 		<span class="unavailablemessage">sold</span>
 	{{/if}}
 </a>

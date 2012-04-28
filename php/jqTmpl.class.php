@@ -200,8 +200,14 @@ class jqTmpl {
 						              // parse modified it.
 						continue;
 					}
-					$skip = (bool)$data->$target == false;
-
+					
+					if( $target[0] == '!' ) {
+						$target = substr($target, 1);
+						$skip = (bool)$data->$target;
+					} else {
+						$skip = (bool)$data->$target == false;
+					}
+					
 					$html .= $this->parse( $tmpl, $data, $matches, $state );
 				}
 
