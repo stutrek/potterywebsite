@@ -1,7 +1,3 @@
-#content {
-	width: 850px;
-}
-
 #content .loading {
 	color: #666;
 	font-size: 3em;
@@ -12,10 +8,10 @@
 
 #content a.product {
 	display: inline-block;
-	height: 113px;
-	width: 150px;
-	margin: 10px;
+	vertical-align: bottom;
+	margin: 0 1px;
 	position: relative;
+	line-height: 1;
 }
 #content a.product:hover {
 	text-decoration: none;
