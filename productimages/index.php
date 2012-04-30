@@ -10,7 +10,7 @@ if (!file_exists( $imagepath ) ) {
 	require("../php/image.class.php");
 	$image = new image();
 	$image_r = $image->load( "5000/$filename" );
-	$image_r = $image->resize( $image_r, $uriArray[0], $uriArray[0] );
+	$image_r = $image->resize( $image_r, $uriArray[0], is_numeric($uriArray[1]) ? $uriArray[1] : $uriArray[0] );
 	
 	@mkdir( dirname($imagepath), 0777, true );
 	
