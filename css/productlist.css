@@ -9,9 +9,18 @@
 #content a.product {
 	display: inline-block;
 	vertical-align: bottom;
-	margin: 0 1px;
+	text-align: center;
+	margin: 1px 1px;
 	position: relative;
 	line-height: 1;
+	line-height: 213px;
+	width: 284px;
+	height: 213px;
+}
+#content a.product img {
+	vertical-align: center;
+	max-width: 284px;
+	max-height: 213px;
 }
 #content a.product:hover {
 	text-decoration: none;
