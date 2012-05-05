@@ -52,6 +52,11 @@ define(function(require, exports, module) {
 		var renderedTemplate$ = $.tmpl(TEMPLATE_NAME, products[index], {"imageSizes": imageSizes});
 		renderedTemplate$.appendTo(container$)
 		
+		currentIndex = index;
+		
+		productImage$ = container$.find('.productimage img');
+		setImageSize();
+		
 		// TODO: move prev/next buttons to the template
 		if (index === 0) {
 			previous$.hide();
@@ -67,10 +72,6 @@ define(function(require, exports, module) {
 			next$.attr( 'href',  makeHash(index+1));
 		}
 		
-		currentIndex = index;
-		
-		productImage$ = container$.find('.productimage img');
-		setImageSize();
 		popup$.addClass('showing');
 	}
 	
