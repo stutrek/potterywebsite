@@ -121,7 +121,6 @@ define(function(require, exports, module) {
 		previous$ = popup$.find('.previous');
 		
 		screen$.on('click', exports.hide);
-		$(window).on('hashchange', loadHash );
 		$(window).on('resize', setImageSize);
 		
 		loadHash();
@@ -139,6 +138,8 @@ define(function(require, exports, module) {
 		}
 		showing = true;
 	};
+	
+	exports.loadHash = loadHash;
 	
 	exports.showNext = function() {
 		window.location.hash =  makeHash(currentIndex+1);

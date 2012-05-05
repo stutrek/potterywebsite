@@ -13,6 +13,8 @@ define(function(require, exports, module) {
 		productList.init();
 		staticPages.init();
 		
+		$(window).on('hashchange', productPage.loadHash );
+		
 		repositoryPromise.done(recieveProducts);
 		//repositoryPromise.fail(productList.error);
 		
