@@ -1,3 +1,6 @@
+{{if $item.previous}}
+	<a href="./product/${$item.previous.id}/${$item.previous.title}/" class="previous"><span>previous</span></a>
+{{/if}}
 <div class="productimage">
 	<img src="./productimages/${$item.imageSizes.width}/${$item.imageSizes.height}/${filename}" alt="" />
 </div>
@@ -25,3 +28,6 @@
 		</ul>
 	{{/if}}
 </div>
+{{if $item.next}}
+	<a href="./product/${$item.next.id}/${$item.next.title}/" class="next"><span>next</span></a>
+{{/if}}

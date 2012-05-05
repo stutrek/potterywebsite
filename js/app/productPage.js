@@ -6,8 +6,6 @@ define(function(require, exports, module) {
 	var container$;
 	var popup$;
 	var screen$;
-	var next$;
-	var previous$;
 	var productImage$;
 	var productDisplayContainer;
 	var currentIndex;
@@ -49,28 +47,13 @@ define(function(require, exports, module) {
 		}
 		
 		container$.empty();
-		var renderedTemplate$ = $.tmpl(TEMPLATE_NAME, products[index], {"imageSizes": imageSizes});
+		var renderedTemplate$ = $.tmpl(TEMPLATE_NAME, products[index], {"imageSizes": imageSizes, "next": products[index+1], "previous": products[index-1]});
 		renderedTemplate$.appendTo(container$)
 		
 		currentIndex = index;
 		
 		productImage$ = container$.find('.productimage img');
 		setImageSize();
-		
-		// TODO: move prev/next buttons to the template
-		if (index === 0) {
-			previous$.hide();
-		} else {
-			previous$.show();
-			previous$.attr( 'href', makeHash(index-1));
-		}
-		
-		if (index === products.length-1) {
-			next$.hide();
-		} else {
-			next$.show();
-			next$.attr( 'href',  makeHash(index+1));
-		}
 		
 		popup$.addClass('showing');
 	}
@@ -116,9 +99,6 @@ define(function(require, exports, module) {
 		popup$ = $('#product_page');
 		screen$ = popup$.find('.screen');
 		productDisplayContainer = popup$.find('.product_display_container')[0];
-		
-		next$ = popup$.find('.next');
-		previous$ = popup$.find('.previous');
 		
 		screen$.on('click', exports.hide);
 		$(window).on('resize', setImageSize);
