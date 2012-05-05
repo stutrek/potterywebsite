@@ -84,7 +84,7 @@ define(function(require, exports, module) {
 		}
 	}
 	function loadThumb( index ) {
-		container$.find('.productimage img').attr('src', imageUtil.getUrl(products[currentIndex].images[index], imageSizes.width, imageSizes.height, 64));
+		container$.find('.productimage img').attr('src', imageUtil.getUrl(products[currentIndex].images[index], imageSizes.width, imageSizes.height, 100));
 	}
 	function loadHash() {
 		var argv = window.location.hash.split('/');
@@ -99,8 +99,8 @@ define(function(require, exports, module) {
 	}
 	
 	function setImageSize() {
-		imageSizes = imageUtil.getSize(window.innerWidth-30, window.innerHeight-30, 50);
-		container$.find('.productimage img').css(imageUtil.getSize(window.innerWidth-30, window.innerHeight-30));
+		imageSizes = imageUtil.getSize(window.innerWidth-280, window.innerHeight-30, 50);
+		container$.find('.productimage img').css(imageUtil.getSize(window.innerWidth-280, window.innerHeight-30));
 	}
 	
 	exports.init = function( newProducts ) {
