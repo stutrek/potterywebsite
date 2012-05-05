@@ -1,7 +1,7 @@
 <?php
 require("db_setup.php");
 
-$product_fields = array( 'title', 'description', 'type', 'price', 'available', 'awesomeness' );
+$product_fields = array( 'title', 'description', 'type', 'price', 'available', 'awesomeness', 'visible' );
 
 function create_safe_product( $product ) {
 	global $product_fields;
@@ -59,7 +59,7 @@ function get_available_products() {
 }
 
 function get_all_products() {
-	$result = mysql_query("SELECT * FROM products ORDER BY available DESC, date_added DESC");
+	$result = mysql_query("SELECT * FROM products WHERE `visible`=1 ORDER BY available DESC, date_added DESC");
 	return get_all_products_from_result( $result );
 }
 

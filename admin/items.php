@@ -6,6 +6,7 @@ if( isset( $_REQUEST['save'] ) ) {
 	
 	$item_a = $_REQUEST['item'];
 	$item_a['available'] = isset( $item_a['available'] );
+	$item_a['visible'] = isset( $item_a['visible'] );
 	
 	if( is_numeric( $_REQUEST['id'] ) ) {
 		$id = $_REQUEST['id'];
@@ -98,6 +99,7 @@ if( !$item_a ) {
 					<tr><td class="input_label"></td>
 						<td>
 							 <label><input type="checkbox" name="item[available]" id="available" <?= is_checked( $item_a['available'] ); ?>> Available</label><br/>
+							 <label><input type="checkbox" name="item[visible]" id="visible" <?= is_checked( $item_a['visible'] ); ?>> Visible</label><br/>
 						</td>
 					</tr>
 					<tr><td class="input_label">Price</td><td>$<input type="text" name="item[price]" size="7" value="<?= $item_a['price'];?>"></td></tr>
