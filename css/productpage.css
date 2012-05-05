@@ -102,6 +102,9 @@
 	vertical-align: baseline;
 	margin: 0 0 -7px 7px;
 }
+.product_display_container iframe {
+	margin-top: 20px;
+}
 .product_display_container ul.imageselector {
 	margin: 0 0 0 0;
 	padding: 0;
