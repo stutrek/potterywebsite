@@ -118,6 +118,7 @@ if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
 				<a href="#" class="previous"><span>previous</span></a>
 				<div class="content"></div>
 				<a href="#" class="next"><span>next</span></a>
+				<a href="./" class="close">x</a>
 			</div>
 		</div>
 	</div>

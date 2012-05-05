@@ -48,11 +48,6 @@
 }
 #product_page .product_display_container-border {
 	position: absolute;
-/*
-	top: 50%;
-	height: 525px;
-	margin-top: -272px;
-*/
 	width: 100%;
 }
 .product_display_container {
@@ -72,18 +67,19 @@
 	z-index: 2;
 	margin: 5px auto 0;
 }
+.product_display_container .close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: white;
+}
 .product_display_container .productimage {
 	margin-right: 250px;
-/* 	width: 700px; */
 	height: 100%;
 	overflow: auto;
 }
 
 .product_display_container .productimage img {
-/*
-	width: 700px;
-	height: 525px;
-*/
 	vertical-align: bottom;
 }
 .product_display_container .productinfo {
