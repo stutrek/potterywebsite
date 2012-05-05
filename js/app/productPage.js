@@ -99,7 +99,7 @@ define(function(require, exports, module) {
 	}
 	
 	function setImageSize() {
-		imageSizes = imageUtil.getSize(window.innerWidth-280, window.innerHeight-30, 50);
+		imageSizes = imageUtil.getSize(window.innerWidth-280, window.innerHeight-30, 200);
 		container$.find('.productimage img').css(imageUtil.getSize(window.innerWidth-280, window.innerHeight-30));
 	}
 	

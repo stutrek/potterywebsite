@@ -9,7 +9,6 @@ define(function(require, exports, module) {
 			productPage.init( products );
 		}
 		
-		
 		var repositoryPromise = productRepository.loadAll();
 		productList.init();
 		staticPages.init();
