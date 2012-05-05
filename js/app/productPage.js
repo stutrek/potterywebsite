@@ -8,6 +8,8 @@ define(function(require, exports, module) {
 	var screen$;
 	var next$;
 	var previous$;
+	var productImage$;
+	var productDisplayContainer;
 	var currentIndex;
 	var products;
 	var showing = false;
@@ -67,13 +69,14 @@ define(function(require, exports, module) {
 		
 		currentIndex = index;
 		
+		productImage$ = container$.find('.productimage img');
 		setImageSize();
 		popup$.addClass('showing');
 	}
 	
 	function thumbnailImageClick( event ) {
 		var newSrc = event.currentTarget.getAttribute('data-src');
-		container$.find('.productimage img').attr('src', newSrc);
+		productImage$.attr('src', newSrc);
 	}
 	
 	function loadProductById( id ) {
@@ -100,7 +103,10 @@ define(function(require, exports, module) {
 	
 	function setImageSize() {
 		imageSizes = imageUtil.getSize(window.innerWidth-280, window.innerHeight-30, 200);
-		container$.find('.productimage img').css(imageUtil.getSize(window.innerWidth-280, window.innerHeight-30));
+		productImage$.css(imageUtil.getSize(window.innerWidth-280, window.innerHeight-30));
+		setTimeout(function(){
+			productDisplayContainer.style.marginTop = ((window.innerHeight-productDisplayContainer.offsetHeight) / 2)+'px';
+		}, 0);
 	}
 	
 	exports.init = function( newProducts ) {
@@ -108,14 +114,17 @@ define(function(require, exports, module) {
 		container$ = $('#product_page .content');
 		popup$ = $('#product_page');
 		screen$ = popup$.find('.screen');
+		productDisplayContainer = popup$.find('.product_display_container')[0];
+		
 		next$ = popup$.find('.next');
 		previous$ = popup$.find('.previous');
-		screen$.on('click', exports.hide);
 		
+		screen$.on('click', exports.hide);
 		$(window).on('hashchange', loadHash );
 		$(window).on('resize', setImageSize);
-		setImageSize();
+		
 		loadHash();
+		setImageSize();
 	};
 	
 	exports.setProducts = function( newProducts ) {
