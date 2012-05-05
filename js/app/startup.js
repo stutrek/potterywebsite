@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	var products = [];
-	window.scrollTo(0, 1);	
+	window.scrollTo(0, 1);
 	require.async(['./productRepository', './productList', './productPage', './staticPages', './imageUtil'], function(productRepository, productList, productPage, staticPages, imageUtil) {
 		
 		function recieveProducts( newProducts ) {
@@ -18,6 +18,11 @@ define(function(require, exports, module) {
 		
 		$(document).on('click', 'a', function(event) {
 			if (event.currentTarget.getAttribute('href').substr(0,2) === './') {
+				
+				//make sure the URL bar is hidden on mobiles
+				if (window.scrollY <= 1) {
+						setTimeout(function(){ window.scrollTo(0, 1); }, 0);
+				}
 				window.location.hash = '!'+event.currentTarget.getAttribute('href').substr(2);
 				event.preventDefault();
 			}

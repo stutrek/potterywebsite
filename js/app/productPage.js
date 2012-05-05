@@ -105,7 +105,7 @@ define(function(require, exports, module) {
 	function setImageSize() {
 		imageSizes = imageUtil.getSize(window.innerWidth-280, window.innerHeight-30, 200);
 		productImage$.css(imageUtil.getSize(window.innerWidth-280, window.innerHeight-30));
-		setTimeout(function(){
+		setTimeout(function(){ // it offsetHeight is zero until the next redraw.
 			productDisplayContainer.style.marginTop = ((window.innerHeight-productDisplayContainer.offsetHeight) / 2)+'px';
 		}, 0);
 	}
