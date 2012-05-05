@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 	var products = [];
 	window.scrollTo(0, 1);	
-	require.async(['./productRepository', './productList', './productPage', './staticPages'], function(productRepository, productList, productPage, staticPages) {
+	require.async(['./productRepository', './productList', './productPage', './staticPages', './imageUtil'], function(productRepository, productList, productPage, staticPages, imageUtil) {
 		
 		function recieveProducts( newProducts ) {
 			products = newProducts;

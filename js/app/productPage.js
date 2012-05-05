@@ -1,5 +1,7 @@
 define(function(require, exports, module) {
 	
+	var imageUtil = require('./imageUtil');
+	
 	var TEMPLATE_NAME = 'templates/productpage.html';
 	var container$;
 	var popup$;
@@ -9,6 +11,10 @@ define(function(require, exports, module) {
 	var currentIndex;
 	var products;
 	var showing = false;
+	var imageSizes = {
+		width: 700,
+		height: 700 * imageUtil.aspectRatio
+	};
 	
 	var previousHash = '';
 
@@ -41,9 +47,10 @@ define(function(require, exports, module) {
 		}
 		
 		container$.empty();
-		var renderedTemplate$ = $.tmpl(TEMPLATE_NAME, products[index]);
+		var renderedTemplate$ = $.tmpl(TEMPLATE_NAME, products[index], {"imageSizes": imageSizes});
 		renderedTemplate$.appendTo(container$)
 		
+		// TODO: move prev/next buttons to the template
 		if (index === 0) {
 			previous$.hide();
 		} else {
@@ -59,6 +66,8 @@ define(function(require, exports, module) {
 		}
 		
 		currentIndex = index;
+		
+		setImageSize();
 		popup$.addClass('showing');
 	}
 	
@@ -75,7 +84,7 @@ define(function(require, exports, module) {
 		}
 	}
 	function loadThumb( index ) {
-		container$.find('.productimage img').attr('src', './productimages/700/'+products[currentIndex].images[index].filename);
+		container$.find('.productimage img').attr('src', imageUtil.getUrl(products[currentIndex].images[index], imageSizes.width, imageSizes.height, 64));
 	}
 	function loadHash() {
 		var argv = window.location.hash.split('/');
@@ -88,6 +97,12 @@ define(function(require, exports, module) {
 			exports.hide();
 		}
 	}
+	
+	function setImageSize() {
+		imageSizes = imageUtil.getSize(window.innerWidth-30, window.innerHeight-30, 50);
+		container$.find('.productimage img').css(imageUtil.getSize(window.innerWidth-30, window.innerHeight-30));
+	}
+	
 	exports.init = function( newProducts ) {
 		products = newProducts;
 		container$ = $('#product_page .content');
@@ -98,6 +113,8 @@ define(function(require, exports, module) {
 		screen$.on('click', exports.hide);
 		
 		$(window).on('hashchange', loadHash );
+		$(window).on('resize', setImageSize);
+		setImageSize();
 		loadHash();
 	};
 	
