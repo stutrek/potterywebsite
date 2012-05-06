@@ -28,7 +28,8 @@
 
 #content a.product .unavailablemessage {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 5px;
+	right: 5px;
 	color: black;
+	line-height: 1;
 }
