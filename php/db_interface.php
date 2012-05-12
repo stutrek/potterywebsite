@@ -5,12 +5,12 @@ $product_fields = array( 'title', 'description', 'type', 'price', 'available', '
 
 function create_safe_product( $product ) {
 	global $product_fields;
-	$safe_product = array();
+	$safe_product = new stdClass();
 	foreach( $product_fields as $field ) {
-		if (!isset($product[$field])) {
+		if (!isset($product->$field)) {
 			die('product is missing field '.$field);
 		}
-		$safe_product[$field] = mysql_real_escape_string($product[$field]);
+		$safe_product->$field = mysql_real_escape_string($product->$field);
 	}
 	return $safe_product;
 }
@@ -18,7 +18,7 @@ function create_safe_product( $product ) {
 function create_clause( $fields ) {
 	$query_string = '';
 	foreach($fields as $key => $val) {
-		$query_string .= " `$key`='$val.',";
+		$query_string .= " `$key`='$val',";
 	}
 	return substr( $query_string, 0, strlen($query_string)-1 );
 }
@@ -82,16 +82,15 @@ function add_product( $product ) {
 }
 
 function update_product( $product ) {
-	if( !is_numeric($product['id']) ) {
+	if( !is_numeric($product->id) ) {
 		die('Tried to update a product with an invalid id!');
 	}
-	
 	$db_product = create_safe_product($product);
 	
 	$query_string = 'UPDATE `products` SET';
 	$query_string .= create_clause( $db_product );
 	
-	$query_string .= " WHERE `id`=$product[id] LIMIT 1";
+	$query_string .= " WHERE `id`=$product->id LIMIT 1";
 	mysql_query($query_string);
 }
 
