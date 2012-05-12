@@ -64,6 +64,7 @@ function get_all_products() {
 }
 
 function get_product($id) {
+	$id = mysql_real_escape_string($id);
 	$result = mysql_query("SELECT * FROM products WHERE id=$id LIMIT 1");
 	$products = get_all_products_from_result( $result );
 	return $products[0];
