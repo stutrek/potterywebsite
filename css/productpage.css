@@ -3,24 +3,16 @@
 }
 #product_page.showing {
 	display: block;
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
 	text-align: center;
-	max-height: 100%;
-	min-height: 545px;
-	overflow: auto;
 }
 
 #product_page .screen {
 	background-color: black;
-	position: fixed;
+	position: absolute;
 	opacity: 0.8;
 	top: 0;
 	left: 0;
-	bottom: 0;
+/* 	bottom: 0; */
 	right: 0;
 	z-index: 1;
 }
@@ -49,6 +41,8 @@
 #product_page .product_display_container-border {
 	position: absolute;
 	width: 100%;
+	left: 0;
+	right: 0;
 }
 .product_display_container {
 	width: 950px;
