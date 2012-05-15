@@ -54,8 +54,8 @@ define(function(require, exports, module) {
 		
 		productImage$ = container$.find('.productimage img');
 		setImageSize();
-		
-		productDisplayContainer.parentNode.style.top = window.scrollY+'px';
+		debugger;
+		productDisplayContainer.parentNode.style.top = $(document).scrollTop()+'px';
 		screen$[0].style.height = document.body.scrollHeight+'px'
 		popup$.addClass('showing');
 	}

@@ -1,9 +1,13 @@
 html {
 	background-color: #999;
 	font-family: Georgia, Sans-Serif;
+	margin: 0;
+	padding: 0;
 }
 body {
 	min-width: 100%;
+	margin: 0;
+	padding: 0;
 }
 a {
 	text-decoration: none;

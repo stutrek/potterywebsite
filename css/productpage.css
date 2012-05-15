@@ -70,7 +70,7 @@
 .product_display_container .productimage {
 	margin-right: 250px;
 	height: 100%;
-	overflow: auto;
+	overflow: hidden;
 }
 
 .product_display_container .productimage img {
