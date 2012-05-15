@@ -56,7 +56,7 @@ define(function(require, exports, module) {
 		setImageSize();
 		debugger;
 		productDisplayContainer.parentNode.style.top = $(document).scrollTop()+'px';
-		screen$[0].style.height = document.body.scrollHeight+'px'
+		screen$[0].style.height = Math.max(document.body.scrollHeight, $(window).height())+'px'
 		popup$.addClass('showing');
 	}
 	
@@ -88,12 +88,12 @@ define(function(require, exports, module) {
 	}
 	
 	function setImageSize() {
-		imageSizes = imageUtil.getSize(window.innerWidth-280, window.innerHeight-30, 200);
+		imageSizes = imageUtil.getSize($(window).width()-280, $(window).height()-30, 200);
 		
 		if (productImage$) {
-			productImage$.css(imageUtil.getSize(window.innerWidth-280, window.innerHeight-30));
+			productImage$.css(imageUtil.getSize($(window).width()-280, $(window).height()-30));
 			setTimeout(function(){ // it offsetHeight is zero until the next redraw.
-				productDisplayContainer.style.marginTop = ((window.innerHeight-productDisplayContainer.offsetHeight) / 2)+'px';
+				productDisplayContainer.style.marginTop = (($(window).height()-productDisplayContainer.offsetHeight) / 2)+'px';
 			}, 0);
 		}
 	}

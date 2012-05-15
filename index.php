@@ -41,13 +41,13 @@ if( $uriArray[0] === 'product' and is_numeric($uriArray[1]) ) {
 		echo '<title>Stuart Aaron Ceramics by Stu Kabakoff</title>';
 	}
 	?>
-	<base href="<?php echo $basedir; ?>" />
-	<link rel="stylesheet" href="./css/base.css">
-	<link rel="stylesheet" href="./css/header.css">
-	<link rel="stylesheet" href="./css/footer.css">
-	<link rel="stylesheet" href="./css/staticpages.css">
-	<link rel="stylesheet" href="./css/productlist.css">
-	<link rel="stylesheet" href="./css/productpage.css">
+	<base href="http://<?php echo $_SERVER["HTTP_HOST"].$basedir; ?>" />
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/staticpages.css">
+	<link rel="stylesheet" href="css/productlist.css">
+	<link rel="stylesheet" href="css/productpage.css">
 </head>
 <body>
 	<div id="header">
