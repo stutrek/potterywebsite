@@ -54,8 +54,7 @@ define(function(require, exports, module) {
 		
 		productImage$ = container$.find('.productimage img');
 		setImageSize();
-		productDisplayContainer.parentNode.style.top = $(document).scrollTop()+'px';
-		screen$[0].style.height = Math.max(document.body.scrollHeight, $(window).height())+'px'
+		moveViewToCenter();
 		popup$.addClass('showing');
 	}
 	
@@ -97,6 +96,11 @@ define(function(require, exports, module) {
 		}
 	}
 	
+	function moveViewToCenter() {
+		productDisplayContainer.parentNode.style.top = $(document).scrollTop()+'px';
+		screen$[0].style.height = Math.max(document.body.scrollHeight, $(window).height())+'px'	;
+	}
+	
 	exports.init = function( newProducts ) {
 		products = newProducts;
 		container$ = $('#product_page .content');
@@ -119,6 +123,7 @@ define(function(require, exports, module) {
 		showIndex( index );
 		if (!showing) {
 			$(document).on('keyup', keyListener);
+			$(window).on('scroll', moveViewToCenter);
 		}
 		showing = true;
 	};
@@ -135,6 +140,7 @@ define(function(require, exports, module) {
 	exports.hide = function() {
 		popup$.removeClass('showing');
 		$(document).off('keyup', keyListener);
+		$(window).off('scroll', moveViewToCenter);
 		showing = false;
 		currentIndex = -1;
 	};
